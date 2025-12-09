@@ -33,6 +33,8 @@ func main() {
 		log.SetOutput(os.Stdout)
 	}
 
+	go cache.StartPeriodicCleanup()
+
 	pc, err := net.ListenPacket("udp", *addr)
 	if err != nil {
 		log.Fatalf("listen failed: %v", err)
